@@ -1,8 +1,17 @@
-// math_utils.h
-#pragma once
+#ifndef MATH_UTILS_H
+#define MATH_UTILS_H
+
 #include <vector>
+#include <numeric>
 
 namespace simplecpp {
-    int sum(const std::vector<int>& numbers);
-    double average(const std::vector<int>& numbers);
+
+    template <typename T>
+    T sum(const std::vector<T>& numbers);
+
+    template <typename T>
+    T average(const std::vector<T>& numbers);
+
 }
+
+#endif // MATH_UTILS_H

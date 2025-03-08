@@ -1,6 +1,7 @@
 // example.cpp
 #include "simplecpp.h"
-
+#include <vector>
+#include <string>
 
 int main() {
     // Affichage simplifié
@@ -21,13 +22,28 @@ int main() {
     std::string text = "Hello World!";
     simplecpp::print("Uppercase : " + simplecpp::toUpper(text));
     simplecpp::print("Lowercase : " + simplecpp::toLower(text));
+    simplecpp::print("Trimmed : " + simplecpp::trim("  Some Text  "));
+    simplecpp::print("Formatted String: " + simplecpp::format("Hello {}, welcome to {}!", "User", "SimpleCPP"));
 
     // Gestion des erreurs
-    simplecpp::handleError("Ceci est un message d'erreur de test.");
+    try {
+        simplecpp::handleError("Ceci est un message d'erreur de test.");
+    }
+    catch (const simplecpp::SimpleCPPError& e) {
+        simplecpp::print("Erreur capturée : " + std::string(e.what()));
+    }
 
     // Manipulation des tableaux
     std::vector<std::string> words = { "Hello", "SimpleCPP", "World" };
     simplecpp::print("Joined words: " + simplecpp::join(words, ", "));
+
+    // Gestion de la mémoire (Pointeur intelligent)
+    auto ptr = simplecpp::makePtr<int>(new int(42)); // Allocation automatique
+    simplecpp::print("Pointeur intelligent avec valeur : " + std::to_string(*ptr));
+
+    // Exemple d'utilisation de la bibliothèque pour manipuler les répertoires
+    simplecpp::createDirectory("simplecpp_test_directory");
+    simplecpp::print("Répertoire créé : simplecpp_test_directory");
 
     return 0;
 }

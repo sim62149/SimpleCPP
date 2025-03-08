@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "file_utils.h"
+#include "memory_utils.h"
 #include "math_utils.h"
 #include "string_utils.h"
 #include "error_utils.h"
